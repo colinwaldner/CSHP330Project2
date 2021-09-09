@@ -6,13 +6,27 @@ using Newtonsoft.Json;
 
 namespace LearningCenter.Service.Models
 {
+    /// <summary>
+    /// This is an Api Status Code Response Model
+    /// </summary>
     public class ApiResponse
     {
+        /// <summary>
+        /// Status Code
+        /// </summary>
         public int StatusCode { get; }
 
+        /// <summary>
+        /// Message
+        /// </summary>
         [JsonProperty(NullValueHandling = NullValueHandling.Ignore)]
         public string Message { get; }
 
+        /// <summary>
+        /// Api Response constructor
+        /// </summary>
+        /// <param name="statusCode">Status Code</param>
+        /// <param name="message">Message</param>
         public ApiResponse(int statusCode, string message = null)
         {
             StatusCode = statusCode;

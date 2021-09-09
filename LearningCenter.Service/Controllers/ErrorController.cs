@@ -18,7 +18,7 @@ namespace LearningCenter.Service.Controllers
         /// <summary>
         /// This is the primary Error route
         /// </summary>
-        /// <param name="code">Http Status code (int32)</param>
+        /// <param name="code">Status code (int32)</param>
         /// <returns></returns>
         [Route("/error/{code}")]
         [HttpGet]

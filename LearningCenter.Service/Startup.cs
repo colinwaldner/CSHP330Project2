@@ -17,8 +17,6 @@ namespace LearningCenter.Service
 {
     public class Startup
     {
-        
-
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
@@ -32,9 +30,8 @@ namespace LearningCenter.Service
             services.AddControllers();
             services.AddSwaggerGen(c => 
             {
-                var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
-                var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
-                c.IncludeXmlComments(xmlPath);
+                var xmlPath = Path.Combine(AppContext.BaseDirectory, "LearningCenter.Service.xml");
+                c.IncludeXmlComments(xmlPath, true);
             });
             services.AddSwaggerGenNewtonsoftSupport();
         }

@@ -9,14 +9,21 @@ using LearningCenter.Service.Models;
 
 namespace LearningCenter.Service.Controllers
 {
+    /// <summary>
+    /// This is my User controller
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authenticator]
     public class UsersController : ControllerBase
     {
         private static int CurrentId = 1;
         private static List<User> _users = new List<User>();
 
-        // GET: api/<UsersController>
+        /// <summary>
+        /// Get all users
+        /// </summary>
+        /// <returns></returns>
         [HttpGet]
         public IEnumerable<User> Get()
         {
@@ -30,7 +37,12 @@ namespace LearningCenter.Service.Controllers
             return _users;
         }
 
-        // GET api/<UsersController>/5
+
+        /// <summary>
+        /// Get user (id)
+        /// </summary>
+        /// <param name="id">User id (int32)</param>
+        /// <returns></returns>
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -44,7 +56,11 @@ namespace LearningCenter.Service.Controllers
             return Ok(user);
         }
 
-        // POST api/<UsersController>
+        /// <summary>
+        /// Add user (email, password)
+        /// </summary>
+        /// <param name="user">User object</param>
+        /// <returns></returns>
         [HttpPost]
         public IActionResult Post([FromBody] User user)
         {
@@ -65,7 +81,12 @@ namespace LearningCenter.Service.Controllers
             return CreatedAtAction(nameof(Get), new { Id = user.Id, CreatedDate = user.CreateDate }, user);
         }
 
-        // PUT api/<UsersController>/5
+        /// <summary>
+        /// Update user (email, password)
+        /// </summary>
+        /// <param name="id">User id (int32)</param>
+        /// <param name="update_user">User object</param>
+        /// <returns></returns>
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] User update_user)
         {
@@ -92,7 +113,11 @@ namespace LearningCenter.Service.Controllers
             return Ok(user);
         }
 
-        // DELETE api/<UsersController>/5
+        /// <summary>
+        /// Delete user (id)
+        /// </summary>
+        /// <param name="id">User id (int32)</param>
+        /// <returns></returns>
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
