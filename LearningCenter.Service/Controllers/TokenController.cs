@@ -8,6 +8,9 @@ namespace LearningCenter.Service.Controllers
         public string Password { get; set; }
     }
 
+    /// <summary>
+    /// Generate Tokens
+    /// </summary>
     [Route("api/[controller]")]
     [ApiController]
     public class TokenController : ControllerBase
