@@ -7,6 +7,9 @@ namespace LearningCenter.Service.Models
 {
     public class User
     {
+        /// <summary>
+        /// This is my Id
+        /// </summary>
         public int Id { get; set; }
         public string Email { get; set; }
         public string Password { get; set; }
