@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.PlatformAbstractions;
+using Microsoft.AspNetCore.Cors;
 
 namespace LearningCenter.Service
 {
@@ -37,9 +38,15 @@ namespace LearningCenter.Service
 
             services.AddCors(options =>
             {
-                options.AddDefaultPolicy(builder =>
+                //options.AddDefaultPolicy(builder =>
+                //{
+                //    builder.AllowAnyOrigin().AllowAnyMethod();
+                //});
+                options.AddPolicy("GETONLY", builder =>
                 {
-                    builder.AllowAnyOrigin().AllowAnyMethod();
+                    builder
+                    .AllowAnyOrigin()
+                    .WithMethods("GET");
                 });
             });
         }
@@ -47,7 +54,7 @@ namespace LearningCenter.Service
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
-            app.UseCors();
+            
             app.UseSwagger();
             app.UseSwaggerUI(c =>
             {
@@ -64,7 +71,7 @@ namespace LearningCenter.Service
             }
 
             app.UseRouting();
-
+            app.UseCors();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>

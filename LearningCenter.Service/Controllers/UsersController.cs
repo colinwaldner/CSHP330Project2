@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using LearningCenter.Service.Models;
+using Microsoft.AspNetCore.Cors;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -14,6 +15,7 @@ namespace LearningCenter.Service.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("GETONLY")]
     //[Authenticator]
     public class UsersController : ControllerBase
     {
@@ -24,6 +26,7 @@ namespace LearningCenter.Service.Controllers
         /// Get all users
         /// </summary>
         /// <returns></returns>
+        
         [HttpGet]
         public IEnumerable<User> Get()
         {
