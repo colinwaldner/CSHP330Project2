@@ -14,7 +14,7 @@ namespace LearningCenter.Service.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
-    [Authenticator]
+    //[Authenticator]
     public class UsersController : ControllerBase
     {
         private static int CurrentId = 1;

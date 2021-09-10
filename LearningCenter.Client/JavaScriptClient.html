@@ -1,0 +1,36 @@
+﻿<!DOCTYPE HTML>
+<html>
+<head>
+    <script src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script>
+        window.onload = function () {
+            GetContacts();
+        }
+        function GetContacts()
+        {
+            $.ajax({
+                type: "GET",
+                url: 'http://localhost:44390/api/users'
+            })
+                .success(function (data, textStatus, jqXHR) {
+                    console.log({data});
+                var content = $('#body')
+                content.empty()
+                for (var c = 0; c < data.length; c++) {
+                    var contact = data[c]
+                    content.append('<p>' + contact.id + ' : ' + contact.email +
+                        ' : ' + contact["createDate"] + '</p>')
+                }
+            })
+            .fail(function (data, err) {
+                alert('fail')
+            });
+        }
+    </script>
+</head>
+<body>
+    <div id="body">
+        Loading contacts...
+    </div>
+</body>
+</html>
