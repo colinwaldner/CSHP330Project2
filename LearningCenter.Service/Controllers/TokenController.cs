@@ -25,6 +25,7 @@ namespace LearningCenter.Service.Controllers
 
         // This should require SSL
         [HttpGet]
+        [Route("{userName}/{password}")]
         public dynamic Get(string userName, string password)
         {
             var token = TokenHelper.GetToken(userName, password);

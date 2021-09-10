@@ -8,11 +8,13 @@ using Microsoft.AspNetCore.Cors;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
+
 namespace LearningCenter.Service.Controllers
 {
     /// <summary>
     /// This is my User controller
     /// </summary>
+    [ApiVersion("1.0")]
     [Route("api/[controller]")]
     [ApiController]
     [EnableCors("GETONLY")]
@@ -57,6 +59,18 @@ namespace LearningCenter.Service.Controllers
             }
 
             return Ok(user);
+        }
+        [HttpGet]
+        [Route("{id}/orders")]
+        public IActionResult GetContactOrders(int id)
+        {            
+            return Ok(new User
+            {
+                Id = 99,
+                Email = "BOO",
+                Password = "NANA",
+                CreateDate = DateTime.Now
+            });
         }
 
         /// <summary>
